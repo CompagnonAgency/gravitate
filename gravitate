@@ -11,7 +11,7 @@ var request = require('request'),
 var data = {
   name: 'grav-project',
   slug: 'grav-project',
-  repo: 'https://github.com/getgrav/grav/archive/master.zip',
+  repo: 'https://github.com/Polarbitco/gravitate-grav/archive/master.zip',
   temp: './temp.zip',
   version: '1.0'
 }
