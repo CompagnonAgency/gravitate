@@ -16,7 +16,7 @@ var request = require('request'),
 var data = {
   repo: 'https://github.com/Polarbitco/gravitate-grav/archive/master.zip',
   temp: './temp.zip',
-  version: '0.3.3'
+  version: '0.3.4',
   loadingPreset: presets.dots
 }
 
@@ -31,18 +31,25 @@ function bootstrap() {
   var args = process.argv.slice(2);
 
   switch (args[0]) {
-    case 'new':
-      inquire();
-    break;
     case 'help':
       help();
     break;
     case 'version':
       version();
     break;
+    case 'new':
+      inquire();
+    break;
     default:
       help();
    }
+}
+
+function help() {
+  console.log('Commands:');
+  console.log('   gravitate [new]........Generates a new Grav site.');
+  console.log('   gravitate [version]....Show version.');
+  console.log('   gravitate [help].......Provides help.');
 }
 
 function version() {
@@ -137,12 +144,6 @@ function inquire() {
     }
     download();
   });
-}
-
-function help() {
-  console.log('Commands:');
-  console.log('   gravitate [new]........Generates a new Grav site.');
-  console.log('   gravitate [help].......Provides help.');
 }
 
 function download() {
