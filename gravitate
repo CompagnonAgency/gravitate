@@ -16,7 +16,7 @@ var request = require('request'),
 var data = {
   repo: 'https://github.com/Polarbitco/gravitate-grav/archive/master.zip',
   temp: './temp.zip',
-  version: '0.3.4',
+  version: '0.3.5',
   loadingPreset: presets.dots
 }
 
