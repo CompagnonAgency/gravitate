@@ -1,6 +1,6 @@
 {
   "name": "gravitate-grav",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Project scaffolding for Grav CMS.",
   "main": "gravitate",
   "bin": {
