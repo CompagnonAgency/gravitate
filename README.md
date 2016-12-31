@@ -9,7 +9,7 @@
 
 ## Installation
 
-    npm install gravitate -g
+    npm install gravitate-grav -g
 
 ## Usage
 
