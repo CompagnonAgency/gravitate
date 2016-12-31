@@ -193,7 +193,7 @@ function overwrite() {
     .then(function(results) {
       fs.removeSync(extractPath + input.siteSlug + '_temp');
       loading.stop(loadingTimer);
-      loadingTimer = loading.start('Installing packages...', {
+      loadingTimer = loading.start('Installing Node packages...', {
         frames: data.loadingPreset
       });
       process.chdir(extractPath + input.siteName);
@@ -205,23 +205,31 @@ function overwrite() {
 }
 
 function npmInstall() {
-  exec('npm install', {silent: false}, function(code) {
+  exec('npm install', {silent: true}, function(code) {
     if (!code) {
+      loading.stop(loadingTimer);
+      loadingTimer = loading.start('Installing Bower packages...', {
+        frames: data.loadingPreset
+      });
       bowerInstall();
     }
   });
 }
 
 function bowerInstall() {
-  exec('bower install', {silent: false}, function(code) {
+  exec('bower install', {silent: true}, function(code) {
     if (!code) {
+      loading.stop(loadingTimer);
+      loadingTimer = loading.start('Installing Grav...', {
+        frames: data.loadingPreset
+      });
       chmodGrav();
     }
   });
 }
 
 function chmodGrav() {
-  exec('chmod +x bin/grav', {silent: false}, function(code) {
+  exec('chmod +x bin/grav', {silent: true}, function(code) {
     if (!code) {
       chmodGpm();
     }
@@ -229,7 +237,7 @@ function chmodGrav() {
 }
 
 function chmodGpm() {
-  exec('chmod +x bin/gpm', {silent: false}, function(code) {
+  exec('chmod +x bin/gpm', {silent: true}, function(code) {
     if (!code) {
       gravInstall();
     }
@@ -237,7 +245,7 @@ function chmodGpm() {
 }
 
 function gravInstall() {
-  exec('bin/grav install', {silent: false}, function(code) {
+  exec('bin/grav install', {silent: true}, function(code) {
     if (!code) {
       loading.stop(loadingTimer);
       console.log(finish('Generating Grav site completed ✓'));
