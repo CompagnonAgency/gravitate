@@ -167,7 +167,7 @@ function moveDir() {
 
 function copyDir(file) {
   var dirPath = extractPath + 'temp/' + file;
-  mv(dirPath, extractPath + input.slug + '_temp', {mkdirp: true}, function(err) {
+  mv(dirPath, extractPath + input.siteSlug + '_temp', {mkdirp: true}, function(err) {
     overwrite();
     fs.removeSync(extractPath + 'temp/');
   });
@@ -181,22 +181,22 @@ function overwrite() {
   });
 
   var templateFactory = factory({
-    template: extractPath + input.slug + '_temp',
+    template: extractPath + input.siteSlug + '_temp',
   });
 
   var options = {
-    destination: extractPath + input.slug,
+    destination: extractPath + input.siteSlug,
     overwrite: true,
   };
 
   templateFactory(options, input)
     .then(function(results) {
-      fs.removeSync(extractPath + input.slug + '_temp');
+      fs.removeSync(extractPath + input.siteSlug + '_temp');
       loading.stop(loadingTimer);
       loadingTimer = loading.start('Installing packages...', {
         frames: data.loadingPreset
       });
-      process.chdir(extractPath + input.name);
+      process.chdir(extractPath + input.siteName);
       npmInstall();
     }).catch(function(error) {
       loading.stop(loadingTimer);
@@ -241,7 +241,7 @@ function gravInstall() {
     if (!code) {
       loading.stop(loadingTimer);
       console.log(finish('Generating Grav site completed ✓'));
-      console.log(finish('See '+chalk.underline('./' + input.slug + '/README.md')+' for more information'));
+      console.log(finish('See '+chalk.underline('./' + input.siteSlug + '/README.md')+' for more information'));
     }
   });
 }
