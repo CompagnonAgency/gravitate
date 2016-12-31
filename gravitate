@@ -123,7 +123,7 @@ function inquire() {
 
   inquirer.prompt(questions).then(function (answers) {
     input = answers;
-    input.siteSlug = slug(input.siteName).toLowerCase();
+    input.siteSlug = slug(input.siteName, '').toLowerCase();
     if (!input.siteClientName) {
       input.siteClientName = input.siteAuthor;
     }
@@ -205,7 +205,7 @@ function overwrite() {
 }
 
 function npmInstall() {
-  exec('npm install', {silent: true}, function(code) {
+  exec('npm install', {silent: false}, function(code) {
     if (!code) {
       bowerInstall();
     }
@@ -213,7 +213,7 @@ function npmInstall() {
 }
 
 function bowerInstall() {
-  exec('bower install', {silent: true}, function(code) {
+  exec('bower install', {silent: false}, function(code) {
     if (!code) {
       chmodGrav();
     }
@@ -221,7 +221,7 @@ function bowerInstall() {
 }
 
 function chmodGrav() {
-  exec('chmod +x bin/grav', {silent: true}, function(code) {
+  exec('chmod +x bin/grav', {silent: false}, function(code) {
     if (!code) {
       chmodGpm();
     }
@@ -229,7 +229,7 @@ function chmodGrav() {
 }
 
 function chmodGpm() {
-  exec('chmod +x bin/gpm', {silent: true}, function(code) {
+  exec('chmod +x bin/gpm', {silent: false}, function(code) {
     if (!code) {
       gravInstall();
     }
@@ -237,7 +237,7 @@ function chmodGpm() {
 }
 
 function gravInstall() {
-  exec('bin/grav install', {silent: true}, function(code) {
+  exec('bin/grav install', {silent: false}, function(code) {
     if (!code) {
       loading.stop(loadingTimer);
       console.log(finish('Generating Grav site completed ✓'));

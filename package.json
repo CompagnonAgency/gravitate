@@ -1,6 +1,6 @@
 {
   "name": "gravitate-grav",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Project scaffolding for Grav like a boss. 👊",
   "main": "gravitate",
   "bin": {
