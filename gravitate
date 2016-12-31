@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 var request = require('request'),
-    unzip = require('unzip'),
     path = require('path'),
     AdmZip = require('adm-zip'),
     mv = require('mv'),
