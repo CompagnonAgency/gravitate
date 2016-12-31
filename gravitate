@@ -22,7 +22,7 @@ var data = {
 var error = chalk.bold.red;
 var finish = chalk.bold.green;
 
-var extractPath =  path.join(path.dirname(fs.realpathSync(__filename)), './');
+var extractPath = process.cwd() + '/';
 bootstrap();
 
 function bootstrap() {
