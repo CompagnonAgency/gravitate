@@ -13,6 +13,8 @@
 - **[grav-sync](https://github.com/Polarbitco/grav-sync)**: sync remote/local environment by pulling the `/user` folder from your server
 - **Goodies**: FontAwesome, Bower, jQuery, Google Analytics...
 
+The entire scaffold template can be found [here](https://github.com/Polarbitco/gravitate-grav).
+
 ## Installation
 
     $ npm install gravitate-grav -g
