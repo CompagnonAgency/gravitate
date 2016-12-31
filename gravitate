@@ -9,19 +9,23 @@ var request = require('request'),
     loading = require('loading-indicator'),
     presets = require('loading-indicator/presets'),
     chalk = require('chalk'),
+    inquirer = require('inquirer'),
+    shelljs = require('shelljs/global'),
     fs = require('fs-extra');
 
 var data = {
-  name: 'Sample project',
-  slug: 'sample-project',
   repo: 'https://github.com/Polarbitco/gravitate-grav/archive/master.zip',
   temp: './temp.zip',
   loadingPreset: presets.dots
 }
 
+var input = {
+  name: 'Sample project',
+  slug: 'sample-project'
+}
+
 var error = chalk.bold.red;
 var finish = chalk.bold.green;
-
 var extractPath = process.cwd() + '/';
 bootstrap();
 
@@ -41,9 +45,25 @@ function bootstrap() {
 }
 
 function inquire() {
-  //data.name = args[1];
-  //data.slug = slug(data.name);
-  download();
+  var questions = [
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What\'s the name of your project?',
+      validate: function (value) {
+        if (value) {
+          return true;
+        }
+        return 'Please enter a valid name';
+      }
+    }
+  ];
+
+  inquirer.prompt(questions).then(function (answers) {
+    input = answers;
+    input.slug = slug(input.name).toLowerCase();
+    download();
+  });
 }
 
 function help() {
@@ -82,7 +102,7 @@ function moveDir() {
 
 function copyDir(file) {
   var dirPath = extractPath + 'temp/' + file;
-  mv(dirPath, extractPath + data.slug + '_temp', {mkdirp: true}, function(err) {
+  mv(dirPath, extractPath + input.slug + '_temp', {mkdirp: true}, function(err) {
     overwrite();
     fs.removeSync(extractPath + 'temp/');
   });
@@ -96,32 +116,71 @@ function overwrite() {
   });
 
   var templateFactory = factory({
-    template: extractPath + data.slug + '_temp',
+    template: extractPath + input.slug + '_temp',
   });
 
   var options = {
-    destination: extractPath + data.slug,
+    destination: extractPath + input.slug,
     overwrite: true,
   };
   var context = {
-    siteName: data.name,
-    siteSlug: data.slug
+    siteName: input.name,
+    siteSlug: input.slug
   };
 
   templateFactory(options, context)
     .then(function(results) {
-      fs.removeSync(extractPath + data.slug + '_temp');
+      fs.removeSync(extractPath + input.slug + '_temp');
       loading.stop(loadingTimer);
-      console.log(finish('Generating Grav site completed ✓'));
-      console.log(finish('See '+chalk.underline('./' + data.slug + '/README.md')+' for more information'));
+      loadingTimer = loading.start('Installing packages...', {
+        frames: data.loadingPreset
+      });
+      process.chdir(extractPath + input.name);
+      npmInstall();
     }).catch(function(error) {
       loading.stop(loadingTimer);
       console.log(error('Template creation failed: ' + error));
     });
+}
 
-  // write readme
-  // ask for more data during `new` command: description, author etc.
-  // run bin/grav install, create admin account?, npm install bower install
-  // test out with mamp
-  // add sample site
+function npmInstall() {
+  exec('npm install', {silent: true}, function(code) {
+    if (!code) {
+      bowerInstall();
+    }
+  });
+}
+
+function bowerInstall() {
+  exec('bower install', {silent: true}, function(code) {
+    if (!code) {
+      chmodGrav();
+    }
+  });
+}
+
+function chmodGrav() {
+  exec('chmod +x bin/grav', {silent: true}, function(code) {
+    if (!code) {
+      chmodGpm();
+    }
+  });
+}
+
+function chmodGpm() {
+  exec('chmod +x bin/gpm', {silent: true}, function(code) {
+    if (!code) {
+      gravInstall();
+    }
+  });
+}
+
+function gravInstall() {
+  exec('bin/grav install', {silent: true}, function(code) {
+    if (!code) {
+      loading.stop(loadingTimer);
+      console.log(finish('Generating Grav site completed ✓'));
+      console.log(finish('See '+chalk.underline('./' + input.slug + '/README.md')+' for more information'));
+    }
+  });
 }

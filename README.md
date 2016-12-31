@@ -3,6 +3,7 @@
 
 ## Features
 
+- phploy sample
 - Pre-configured Grav
 - SCSS compilation
 - Babel ES6 support
