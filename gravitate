@@ -19,10 +19,7 @@ var data = {
   loadingPreset: presets.dots
 }
 
-var input = {
-  name: 'Sample project',
-  slug: 'sample-project'
-}
+var input = {};
 
 var error = chalk.bold.red;
 var finish = chalk.bold.green;
@@ -48,20 +45,88 @@ function inquire() {
   var questions = [
     {
       type: 'input',
-      name: 'name',
+      name: 'siteName',
       message: 'What\'s the name of your project?',
       validate: function (value) {
         if (value) {
           return true;
         }
-        return 'Please enter a valid name';
+        return 'Please enter a name';
       }
+    },
+    {
+      type: 'input',
+      name: 'siteDescription',
+      message: 'Description',
+      validate: function (value) {
+        if (value) {
+          return true;
+        }
+        return 'Please enter a description';
+      }
+    },
+    {
+      type: 'input',
+      name: 'siteKeywords',
+      message: 'Keywords (separated by comma)',
+      validate: function (value) {
+        if (value) {
+          return true;
+        }
+        return 'Please enter some keywords';
+      }
+    },
+    {
+      type: 'input',
+      name: 'siteAuthor',
+      message: 'Author',
+      validate: function (value) {
+        if (value) {
+          return true;
+        }
+        return 'Please enter an author';
+      }
+    },
+    {
+      type: 'input',
+      name: 'siteClientName',
+      message: 'Client name (optional)'
+    },
+    {
+      type: 'input',
+      name: 'siteEmail',
+      message: 'Email',
+      validate: function (value) {
+        if (value) {
+          return true;
+        }
+        return 'Please enter an email address';
+      }
+    },
+    {
+      type: 'input',
+      name: 'siteUrl',
+      message: 'URL (e.g. http://www.example.com)',
+      validate: function (value) {
+        if (value) {
+          return true;
+        }
+        return 'Please enter a URL';
+      }
+    },
+    {
+      type: 'input',
+      name: 'siteGoogleAnalytics',
+      message: 'Google Analytics ID (e.g. UA-78698997-8, optional)'
     }
   ];
 
   inquirer.prompt(questions).then(function (answers) {
     input = answers;
-    input.slug = slug(input.name).toLowerCase();
+    input.siteSlug = slug(input.siteName).toLowerCase();
+    if (!input.siteClientName) {
+      input.siteClientName = input.siteAuthor;
+    }
     download();
   });
 }
@@ -123,12 +188,8 @@ function overwrite() {
     destination: extractPath + input.slug,
     overwrite: true,
   };
-  var context = {
-    siteName: input.name,
-    siteSlug: input.slug
-  };
 
-  templateFactory(options, context)
+  templateFactory(options, input)
     .then(function(results) {
       fs.removeSync(extractPath + input.slug + '_temp');
       loading.stop(loadingTimer);
