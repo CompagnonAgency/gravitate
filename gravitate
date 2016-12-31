@@ -248,15 +248,43 @@ function chmodGrav() {
 function chmodGpm() {
   exec('chmod +x bin/gpm', {silent: true}, function(code) {
     if (!code) {
+      loading.stop(loadingTimer);
+      loadingTimer = loading.start('Updating plugins...', {
+        frames: data.loadingPreset
+      });
+      updatePlugins();
+    }
+  });
+}
+
+function updatePlugins() {
+  exec('bin/gpm update --all-yes', {silent: false}, function(code) {
+    if (!code) {
+      loading.stop(loadingTimer);
+      loadingTimer = loading.start('Updating Grav...', {
+        frames: data.loadingPreset
+      });
+      mv('README.md', 'README_temp.md');
+      updateGrav();
+    }
+  });
+}
+
+function updateGrav() {
+  exec('bin/gpm selfupgrade --all-yes --force', {silent: false}, function(code) {
+    if (!code) {
+      loading.stop(loadingTimer);
       gravInstall();
     }
   });
 }
 
 function gravInstall() {
+  rm('README.md');
+  mv('README_temp.md', 'README.md');
+
   exec('bin/grav install', {silent: true}, function(code) {
     if (!code) {
-      loading.stop(loadingTimer);
       console.log(finish('Generating Grav site completed ✓'));
       console.log(finish('See '+chalk.underline('./' + input.siteSlug + '/README.md')+' for more information'));
     }

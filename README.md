@@ -3,7 +3,7 @@
 
 ## Features
 
-- **[Grav](https://getgrav.org/)**: pre-configured Grav installation that's ready for duty
+- **[Grav](https://getgrav.org/)**: pre-configured latest version
 - **[Administration Panel](https://github.com/getgrav/grav-plugin-admin)**: Grav standard administration panel plugin
 - Built-in SCSS & Babel ES6 support using **[Gulp](http://gulpjs.com/)**
 - **[STACSS](https://github.com/nielsenramon/stacss)**: The unobtrusive SCSS framework
