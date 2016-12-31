@@ -1,0 +1,33 @@
+title: Home
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 4
+
+      fields:
+        home:
+          type: tab
+          title: Aanpassingen
+
+          fields:
+            first_section:
+              type: section
+              title: Header
+              underline: true
+
+              fields:
+                header.slogan:
+                  type: text
+                  label: Slogan
+                  style: vertical
+                  validate:
+                    type: string
+
+        content:
+          type: tab
+          title: Media

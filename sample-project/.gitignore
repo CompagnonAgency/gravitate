@@ -1,0 +1,24 @@
+# Composer
+.composer
+
+# Node
+node_modules/
+
+# Sass
+.sass-cache
+
+# Grav Specific
+backup/*
+!backup/.*
+cache/*
+!cache/.*
+logs/*
+!logs/.*
+vendor/*
+
+# OS Generated
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+*.swp

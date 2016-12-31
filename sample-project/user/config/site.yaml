@@ -1,0 +1,19 @@
+title: 'Sample project'
+author:
+  name: 'Sam Devinck'
+  email: tiny@personaltrainersam.be
+taxonomies:
+  - category
+  - tag
+metadata:
+  description: 'Sam begeleidt u naar een fitte en gezonde levensstijl. U krijgt een bewegingsplan op maat zodat u uw persoonlijke doelstellingen kan halen!'
+  keywords: 'Personal trainer, training, voeding,blog,sport,gezondheid'
+  copyright: 'Sam Devinck'
+  author: 'Sam Devinck'
+summary:
+  enabled: true
+  format: short
+  size: 300
+  delimiter: '==='
+blog:
+  route: /blog

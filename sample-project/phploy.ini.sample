@@ -1,0 +1,4 @@
+[production]
+    quickmode = ftp://USERNAME:PASSWORD@URL:PORT/PATH
+    passive = true
+    branch = master

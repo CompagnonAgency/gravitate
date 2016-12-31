@@ -6,15 +6,22 @@ var request = require('request'),
     AdmZip = require('adm-zip'),
     mv = require('mv'),
     slug = require('slug'),
+    factory = require('factory'),
+    loading = require('loading-indicator'),
+    presets = require('loading-indicator/presets'),
+    chalk = require('chalk'),
     fs = require('fs-extra');
 
 var data = {
-  name: 'grav-project',
-  slug: 'grav-project',
+  name: 'Sample project',
+  slug: 'sample-project',
   repo: 'https://github.com/Polarbitco/gravitate-grav/archive/master.zip',
   temp: './temp.zip',
-  version: '1.0'
+  loadingPreset: presets.dots
 }
+
+var error = chalk.bold.red;
+var finish = chalk.bold.green;
 
 var extractPath =  path.join(path.dirname(fs.realpathSync(__filename)), './');
 bootstrap();
@@ -24,10 +31,7 @@ function bootstrap() {
 
   switch (args[0]) {
     case 'new':
-      console.log('Creating your new Grav project: ' + args[1]);
-      data.name = args[1];
-      data.slug = slug(data.name);
-      download();
+      inquire();
     break;
     case 'help':
       help();
@@ -37,22 +41,34 @@ function bootstrap() {
    }
 }
 
+function inquire() {
+  //data.name = args[1];
+  //data.slug = slug(data.name);
+  download();
+}
+
 function help() {
-  console.log('Usage:');
-  console.log('  gravitate new SITE_NAME')
+  console.log('Commands:');
+  console.log('   gravitate [new]........Generates a new Grav site.');
+  console.log('   gravitate [help].......Provides help.');
 }
 
 function download() {
-  console.log('Downloading Grav...');
+  var loadingTimer = loading.start('Downloading Grav...', {
+    frames: data.loadingPreset
+  });
   request(data.repo)
     .pipe(fs.createWriteStream(data.temp))
     .on('close', function () {
+      loading.stop(loadingTimer);
       extract();
     });
 }
 
 function extract() {
-  console.log('Extracting zip...')
+  loadingTimer = loading.start('Extracting repository...', {
+    frames: data.loadingPreset
+  });
   var zip = new AdmZip(data.temp);
   zip.extractAllTo(extractPath + 'temp', true);
   fs.unlinkSync(data.temp);
@@ -60,21 +76,53 @@ function extract() {
 }
 
 function moveDir() {
-  console.log('Moving directory...')
   fs.readdir(extractPath + 'temp', (err, files) => {
     copyDir(files[0]);
   })
 }
 
 function copyDir(file) {
-  console.log('Copying contents...')
   var dirPath = extractPath + 'temp/' + file;
-  mv(dirPath, extractPath + data.slug, {mkdirp: true}, function(err) {
+  mv(dirPath, extractPath + data.slug + '_temp', {mkdirp: true}, function(err) {
+    overwrite();
     fs.removeSync(extractPath + 'temp/');
   });
-  template();
 }
 
-function template() {
-  console.log('Write custom template...');
+function overwrite() {
+  loading.stop(loadingTimer);
+
+  loadingTimer = loading.start('Building template...', {
+    frames: data.loadingPreset
+  });
+
+  var templateFactory = factory({
+    template: extractPath + data.slug + '_temp',
+  });
+
+  var options = {
+    destination: extractPath + data.slug,
+    overwrite: true,
+  };
+  var context = {
+    siteName: data.name,
+    siteSlug: data.slug
+  };
+
+  templateFactory(options, context)
+    .then(function(results) {
+      fs.removeSync(extractPath + data.slug + '_temp');
+      loading.stop(loadingTimer);
+      console.log(finish('Generating Grav site completed ✓'));
+      console.log(finish('See '+chalk.underline('./' + data.slug + '/README.md')+' for more information'));
+    }).catch(function(error) {
+      loading.stop(loadingTimer);
+      console.log(error('Template creation failed: ' + error));
+    });
+
+  // write readme
+  // ask for more data during `new` command: description, author etc.
+  // run bin/grav install, create admin account?, npm install bower install
+  // test out with mamp
+  // add sample site
 }

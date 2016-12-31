@@ -1,0 +1,11 @@
+name: Personal Trainer Sam
+version: 1.0.0
+description: "Personal trainer"
+icon: soccer-ball-o
+author:
+  name: Polarbit
+  email: info@polarbit.co
+  url: http://polarbit.co
+homepage: https://personaltrainersam.be
+keywords: theme, core, modern, fast, responsive, html5, css3
+license: MIT

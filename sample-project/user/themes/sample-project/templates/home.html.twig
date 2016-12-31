@@ -1,0 +1,21 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <div class="banner">
+    <video class="banner-video" poster="/user/themes/personaltrainersam/images/video/video.jpg"></video>
+    <div class="banner-overlay"></div>
+    <div class="banner-body">
+      <h1>{{page.header.slogan}}</h1>
+      <img class="banner-signature" src="/user/themes/personaltrainersam/images/signature.png">
+
+      <div class="banner-buttons">
+        <a class="button button-default hvr-shutter-out-horizontal" href="{{ base_url_absolute }}/over-sam" title="Over Sam">
+          Meer over Sam
+        </a>
+        <a class="button button-default hvr-shutter-out-horizontal" href="{{ base_url_absolute }}/contact" title="Contacteer Sam">
+          Contacteer Sam
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

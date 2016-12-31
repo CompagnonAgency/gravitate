@@ -1,0 +1,39 @@
+enabled: true
+route: /admin
+cache_enabled: false
+theme: grav
+logo_text: 'Personal Trainer'
+sidebar:
+  activate: tab
+  hover_delay: 100
+  size: auto
+dashboard:
+  days_of_stats: 7
+widgets:
+  dashboard-maintenance: true
+  dashboard-statistics: true
+  dashboard-notifications: false
+  dashboard-feed: false
+  dashboard-pages: true
+session:
+  timeout: 1800
+warnings:
+  delete_page: true
+edit_mode: normal
+show_github_msg: false
+google_fonts: true
+enable_auto_updates_check: false
+notifications:
+  feed: true
+  dashboard: false
+  plugins: false
+  themes: false
+popularity:
+  enabled: true
+  ignore:
+    - '/test*'
+    - /modular
+  history:
+    daily: '30'
+    monthly: '12'
+    visitors: '20'
