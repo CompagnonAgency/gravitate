@@ -1,12 +1,13 @@
 # Gravitate
-> Project scaffolding for Grav.
+> Project scaffolding for Grav like a boss. 👊
 
 ## Features
 
-- phploy sample
-- Pre-configured Grav
-- SCSS compilation
-- Babel ES6 support
+- **Grav**: pre-configured Grav installation that's ready for duty
+- **Gulp**: built-in SCSS & Babel ES6 support
+- **phploy**:  (required: https://github.com/banago/PHPloy)
+- **grav-sync**: sync remote/local environment by pulling the `/user` folder from your server
+- **Goodies**: FontAwesome, Bower, jQuery, Google Analytics...
 
 ## Installation
 
@@ -18,7 +19,10 @@ Generate a new Grav site.
 
     $ gravitate new
 
-## Building locally
+This will create a new folder which contains the contents of your new Grav project.
+Point whichever local server you're using to this directory and you're good to go! ✅
+
+## Debugging & testing Gravitate
 
 For testing purposes you can `cd` into the directory and install it from there.
 
