@@ -6,6 +6,9 @@
   "bin": {
     "gravitate": "./gravitate"
   },
+  "repository": {
+    "url": "https://github.com/Polarbitco/gravitate.git"
+  },
   "keywords": [
     "grav",
     "cms",
