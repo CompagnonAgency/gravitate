@@ -4,6 +4,7 @@
 ## Features
 
 - **[Grav](https://getgrav.org/)**: pre-configured Grav installation that's ready for duty
+- **[Administration Panel](https://github.com/getgrav/grav-plugin-admin)**: Grav standard administration panel plugin
 - Built-in SCSS & Babel ES6 support using **[Gulp](http://gulpjs.com/)**
 - **[STACSS](https://github.com/nielsenramon/stacss)**: The unobtrusive SCSS framework
 - **[PHPloy](https://github.com/banago/PHPloy)**: incremental Git (S)FTP deployment tool
