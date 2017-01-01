@@ -28,7 +28,7 @@ Generate a new Grav site.
 This will create a new folder which contains the contents of your new Grav project.
 Point whichever local server you're using to this directory and you're good to go! ✅
 
-## Deployment & synchronization
+## Manual installation for testing
 
 For testing purposes you can `cd` into the directory and install it from there.
 
