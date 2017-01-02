@@ -1,0 +1,38 @@
+assets:
+  compress:
+      css: true
+      js: true
+  features:
+    automatic_img_size: false
+  sources:
+    - _assets/bower
+    - _assets/fonts
+    - _assets/images
+    - _assets/javascripts
+    - _assets/stylesheets
+    - _vendor/
+
+baseurl: /
+
+exclude:
+  - .bowerrc
+  - .travis.yml
+  - bin/*
+  - bower.json
+  - circle.yml
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+
+ga_analytics: # Add Google Analytics tracking code
+
+gems:
+  - jekyll-assets
+  - jekyll-sitemap
+
+name: 
+
+permalink: pretty
+
+url: # Add your site url

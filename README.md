@@ -1,39 +1,31 @@
-# Gravitate
-> Project scaffolding for Grav like a boss. 👊
-
-[![asciicast](https://asciinema.org/a/97723.png)](https://asciinema.org/a/97723)
-
-## Features
-
-- **[Grav](https://getgrav.org/)**: pre-configured latest version
-- **[Administration Panel](https://github.com/getgrav/grav-plugin-admin)**: Grav standard administration panel plugin
-- Built-in SCSS & Babel ES6 support using **[Gulp](http://gulpjs.com/)**
-- **[STACSS](https://github.com/nielsenramon/stacss)**: The unobtrusive SCSS framework
-- **[PHPloy](https://github.com/banago/PHPloy)**: incremental Git (S)FTP deployment tool
-- **[grav-sync](https://github.com/Polarbitco/grav-sync)**: sync remote/local environment by pulling the `/user` folder from your server
-- **Goodies**: FontAwesome, Bower, jQuery, Google Analytics...
-
-The entire scaffold template can be found [here](https://github.com/Polarbitco/gravitate-grav).
+# 
 
 ## Installation
 
-    $ npm install gravitate-grav -g
+Setup your environment:
 
-## Usage
+    bin/setup
 
-Generate a new Grav site.
+## Development
 
-    $ gravitate new
+Run Jekyll:
 
-This will create a new folder which contains the contents of your new Grav project.
-Point whichever local server you're using to this directory and you're good to go! ✅
+    bundle exec jekyll serve
 
-## Manual installation for testing
+Used tools:
+  - [Autoprefixer](https://github.com/postcss/autoprefixer)
+  - [Bower](http://bower.io/)
+  - [Circle CI](https://circleci.com/)
+  - [Html-proofer](https://github.com/gjtorikian/html-proofer)
+  - [Jekyll](http://jekyllrb.com/)
+  - [Jekyll assets](https://github.com/jekyll/jekyll-assets)
+  - [Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
+  - [HTML5 Boilerplate](https://html5boilerplate.com/) (Influenced by)
 
-For testing purposes you can `cd` into the directory and install it from there.
+## Deploy to GitHub Pages
 
-    $ npm install . -g
+Run this in the root project folder in your console:
 
-## License
+    bin/deploy
 
-MIT License - All Rights Reserved (c) Polarbit
+[View this](https://github.com/nielsenramon/kickster#automated-deployment-with-circle-ci) for more info about automated deployment with Circle CI.
