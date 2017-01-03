@@ -1,0 +1,82 @@
+// =============================================================================
+// Screens
+// =============================================================================
+
+.screen-container {
+  height: 380px;
+  margin-top: 30px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.screen {
+  width: 600px;
+  height: 380px;
+  margin: 0 auto;
+}
+
+.screen-titlebar {
+  padding: 10px 0 10px 10px;
+  font-size: 0;
+  background-color: $gray-lightest;
+  border-top-right-radius: $base-border-radius;
+  border-top-left-radius: $base-border-radius;
+}
+
+.screen-button {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 3px;
+  font-size: $base-font-size;
+  background-color: $gray-lighter;
+  border-radius: 100%;
+}
+
+.screen-body {
+  height: 100%;
+  padding: 15px;
+  font-family: $mono;
+  color: $white;
+  background-color: $gray-darker;
+
+  .symbol {
+    color: $gray;
+  }
+
+  .question {
+    color: $brand-success;
+  }
+
+  strong {
+    font-weight: 600;
+    color: $white;
+  }
+
+  .answer {
+    color: saturate(lighten($brand-primary, 30), 50);
+  }
+
+  .complete {
+    font-weight: 600;
+    color: $brand-success;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    width: 0;
+    height: 28px;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 400ms ease-in-out;
+
+    &.is-added {
+      width: 570px;
+      opacity: 1;
+    }
+  }
+}

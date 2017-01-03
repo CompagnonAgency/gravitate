@@ -5,8 +5,9 @@
 // Typography
 // =============================================================================
 
-$sans-serif: Helvetica, Arial, sans-serif;
-$serif: Courier, serif;
+$sans-serif: Nunito, Helvetica, Arial, sans-serif;
+$serif: Nunito, Courier, serif;
+$mono: Menlo, Monaco, Inconsolata, "Lucida Console", monospace;
 $base-font-family: $sans-serif;
 $base-font-weight: 400;
 $base-font-weight-bold: 700;
@@ -29,9 +30,10 @@ $white: #fff;
 // Brand colors
 
 $brand-success: #1fbf92;
-$brand-danger: #e74b3c;
-$brand-primary: #3088bf;
+$brand-danger: #ef5c86;
+$brand-primary: #7956a9;
 $brand-warning: #f1c90b;
+$brand-info: #1691e4;
 
 // Font colors
 
@@ -56,12 +58,12 @@ $negative-gutter: 0 - $gutter;
 
 // Font sizes
 
-$base-font-size: 16px;
+$base-font-size: 18px;
 $base-line-height: 1.6;
 
 // Box sizes
 
-$base-border-radius: 1px;
+$base-border-radius: 5px;
 
 // Effects
 // =============================================================================

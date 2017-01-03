@@ -22,6 +22,7 @@ body {
   font-weight: $base-font-weight;
   line-height: $base-line-height;
   color: $base-font-color;
+  background-color: $gray-lightest;
 }
 
 // Typography
@@ -49,15 +50,19 @@ h6 {
 }
 
 h1 {
-  font-size: $base-font-size * 2.25;
+  font-family: $serif;
+  font-size: 58px;
+  color: $gray-darkest;
 }
 
 h2 {
-  font-size: $base-font-size * 2;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 h3 {
-  font-size: $base-font-size * 1.75;
+  font-size: 24px;
+  color: $gray-darkest;
 }
 
 h4 {

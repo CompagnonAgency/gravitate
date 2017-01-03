@@ -1,0 +1,166 @@
+// =============================================================================
+// Banners
+// =============================================================================
+
+.banner {
+  position: relative;
+  z-index: 1;
+  width: 800px;
+  padding: 50px 0 30px;
+  margin: 50px auto 0;
+  text-align: center;
+  background-color: $white;
+  border-radius: $base-border-radius;
+  box-shadow: 0 2px 5px rgba($black, .1);
+
+  h1 {
+    margin-top: -15px;
+  }
+
+  h3 {
+    margin: 25px 0;
+  }
+
+  p {
+    font-size: 22px;
+    color: $gray;
+  }
+
+  a {
+    border-bottom: 2px solid rgba($brand-primary, .1);
+
+    &:hover {
+      border-color: rgba($brand-primary, .4);
+    }
+  }
+}
+
+.banner-logo {
+  height: 120px;
+
+  * {
+    fill: $brand-primary;
+  }
+}
+
+.banner-version {
+  color: $gray;
+}
+
+.banner-actions {
+  margin: 25px 0 30px;
+
+  .button {
+    margin: 0 5px;
+  }
+}
+
+.banner-features {
+  padding: 30px;
+  margin-bottom: 25px;
+  font-size: 0;
+  background-color: lighten($gray-lightest, 3);
+}
+
+.banner-feature {
+  display: inline-block;
+  width: calc(100%/3);
+  padding-right: 30px;
+  font-size: $base-font-size;
+  color: $brand-danger;
+  text-align: center;
+  vertical-align: top;
+
+  &:last-of-type {
+    padding-right: 0;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    color: $gray-darkest;
+  }
+
+  p {
+    font-size: 16px;
+    color: $gray-dark;
+  }
+
+  svg {
+    height: 50px;
+    margin-bottom: 5px;
+    transform: scale(1.5);
+    fill: currentColor;
+  }
+}
+
+.banner-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: $gray-light;
+  text-transform: uppercase;
+
+  &.has-margin {
+    margin-top: 20px;
+  }
+}
+
+.banner-code {
+  display: inline-block;
+  padding: 12px 15px;
+  margin-right: 5px;
+  font-family: $mono;
+  color: $gray-dark;
+  background-color: lighten($gray-lightest, 4);
+  border-radius: $base-border-radius;
+
+  strong {
+    font-weight: 400;
+    color: $brand-primary;
+  }
+}
+
+.banner-split {
+  width: 400px;
+  height: 1px;
+  margin: 30px auto 25px;
+  background-color: $gray-lightest;
+}
+
+.banner-items {
+  padding: 0 15px;
+  margin-bottom: -30px;
+  font-size: 0;
+  text-align: left;
+}
+
+.banner-item {
+  display: inline-block;
+  width: calc(100%/3);
+  min-height: 110px;
+  padding: 0 15px;
+  margin-bottom: 25px;
+  font-size: $base-font-size;
+  color: $brand-danger;
+  vertical-align: top;
+
+  h2 {
+    margin-bottom: 10px;
+    color: $gray-darkest;
+  }
+
+  p {
+    font-size: 16px;
+    color: $gray-dark;
+  }
+}
+
+.new {
+  display: inline-block;
+  padding: 3px 5px;
+  margin-left: 4px;
+  font-size: 14px;
+  color: $white;
+  background-color: $brand-success;
+  border-radius: $base-border-radius;
+}
