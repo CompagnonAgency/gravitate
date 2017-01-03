@@ -10,7 +10,7 @@
 }
 
 .screen {
-  width: 600px;
+  max-width: 650px;
   height: 380px;
   margin: 0 auto;
 }
@@ -40,21 +40,13 @@
   color: $white;
   background-color: $gray-darker;
 
-  .symbol {
-    color: $gray;
-  }
-
-  .question {
-    color: $brand-success;
-  }
+  .symbol { color: $gray; }
+  .question { color: $brand-success; }
+  .answer { color: saturate(lighten($brand-primary, 30), 50); }
 
   strong {
     font-weight: 600;
     color: $white;
-  }
-
-  .answer {
-    color: saturate(lighten($brand-primary, 30), 50);
   }
 
   .complete {
@@ -77,6 +69,28 @@
     &.is-added {
       width: 570px;
       opacity: 1;
+    }
+  }
+}
+
+// Responsive
+// =============================================================================
+
+@include breakpoint(small) {
+  .screen-container {
+    height: 325px;
+    margin-top: 25px;
+  }
+
+  .screen { height: 290px; }
+
+  .screen-body {
+    font-size: 14px;
+
+    li {
+      height: 24px;
+
+      &.is-added { width: 100%; }
     }
   }
 }

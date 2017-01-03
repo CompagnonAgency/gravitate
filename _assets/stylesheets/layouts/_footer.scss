@@ -4,15 +4,20 @@
 
 
 .footer {
-  width: 800px;
+  max-width: 800px;
   margin: 25px auto;
   text-align: center;
 
-  a {
-    font-weight: 600;
-  }
+  a { font-weight: 600; }
+  p { margin-bottom: 5px; }
+}
 
-  p {
-    margin-bottom: 15px;
+// Responsive
+// =============================================================================
+
+@include breakpoint(small) {
+  .footer {
+    padding: 0 15px;
+    font-size: 14px;
   }
 }

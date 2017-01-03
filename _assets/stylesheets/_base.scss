@@ -81,10 +81,12 @@ a {
   color: $base-accent-color;
   text-decoration: none;
   transition: color $base-transition-speed linear;
+
   &:hover,
   &:active {
     color: $base-accent-highlighted-color;
   }
+
   &:focus {
     color: $base-accent-highlighted-color;
     outline: none;
@@ -134,4 +136,11 @@ img {
 ::selection {
   color: $white;
   background-color: $gray-darkest;
+}
+
+// Responsive
+// =============================================================================
+
+@include breakpoint(small) {
+  html { font-size: 16px; }
 }
