@@ -12,7 +12,7 @@ assets:
     - _assets/stylesheets
     - _vendor/
 
-baseurl: /
+baseurl: /gravitate/
 
 exclude:
   - .bowerrc
@@ -25,7 +25,7 @@ exclude:
   - README.md
   - vendor
 
-ga_analytics: # Add Google Analytics tracking code
+ga_analytics: 'UA-78698997-9'
 
 gems:
   - jekyll-assets
@@ -35,4 +35,4 @@ name: Gravitate
 
 permalink: pretty
 
-url: # Add your site url
+url: /
