@@ -1,6 +1,0 @@
-{
-  "name": "gravitate",
-  "dependencies": {
-    "jquery": "~3.1.1"
-  }
-}
