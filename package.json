@@ -1,7 +1,7 @@
 {
   "name": "gravitate-grav",
   "version": "0.3.10",
-  "description": "Project scaffolding for Grav like a boss. 👊",
+  "description": "Project scaffolding for Grav CMS like a boss. 👊",
   "main": "gravitate",
   "bin": {
     "gravitate": "./gravitate"
