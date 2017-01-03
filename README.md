@@ -1,5 +1,5 @@
 # Gravitate
-> Project scaffolding for Grav like a boss. 👊
+> Project scaffolding for Grav CMS like a boss. 👊
 
 [![asciicast](https://asciinema.org/a/97723.png)](https://asciinema.org/a/97723)
 
