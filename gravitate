@@ -16,7 +16,7 @@ var request = require('request'),
 var data = {
   repo: 'https://github.com/CompagnonAgency/gravitate-grav/archive/master.zip',
   temp: './temp.zip',
-  version: '1.0.0',
+  version: '2.0.0',
   loadingPreset: presets.arrows
 }
 
