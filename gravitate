@@ -17,7 +17,7 @@ var data = {
   repo: 'https://github.com/CompagnonAgency/gravitate-grav/archive/master.zip',
   temp: './temp.zip',
   version: '1.0.0',
-  loadingPreset: presets.dots
+  loadingPreset: presets.arrows
 }
 
 var input = {};
@@ -215,18 +215,6 @@ function overwrite() {
 
 function npmInstall() {
   exec('npm install', {silent: true}, function(code) {
-    if (!code) {
-      loading.stop(loadingTimer);
-      loadingTimer = loading.start('Installing Bower packages...', {
-        frames: data.loadingPreset
-      });
-      bowerInstall();
-    }
-  });
-}
-
-function bowerInstall() {
-  exec('bower install', {silent: true}, function(code) {
     if (!code) {
       loading.stop(loadingTimer);
       loadingTimer = loading.start('Installing Grav...', {
