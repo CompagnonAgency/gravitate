@@ -1,4 +1,4 @@
-# Gravitate 2.0
+# Gravitate 2.0 ✨
 > Project scaffolding for Grav CMS like a boss. 👊
 
 [![asciicast](https://asciinema.org/a/97723.png)](https://asciinema.org/a/97723)
