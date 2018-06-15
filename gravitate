@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
 var request = require('request'),
-    path = require('path'),
-    AdmZip = require('adm-zip'),
-    mv = require('mv'),
-    slug = require('slug'),
-    factory = require('factory'),
-    loading = require('loading-indicator'),
-    presets = require('loading-indicator/presets'),
-    chalk = require('chalk'),
-    inquirer = require('inquirer'),
-    shelljs = require('shelljs/global'),
-    fs = require('fs-extra');
+  path = require('path'),
+  AdmZip = require('adm-zip'),
+  mv = require('mv'),
+  slug = require('slug'),
+  factory = require('factory'),
+  loading = require('loading-indicator'),
+  presets = require('loading-indicator/presets'),
+  chalk = require('chalk'),
+  inquirer = require('inquirer'),
+  shelljs = require('shelljs/global'),
+  fs = require('fs-extra');
 
 var data = {
   repo: 'https://github.com/CompagnonAgency/gravitate-grav/archive/master.zip',
@@ -128,11 +128,6 @@ function inquire() {
         }
         return 'Please enter a URL';
       }
-    },
-    {
-      type: 'input',
-      name: 'siteGoogleAnalytics',
-      message: 'Google Analytics ID (e.g. UA-78698997-8, optional)'
     }
   ];
 
