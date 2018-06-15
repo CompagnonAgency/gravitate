@@ -5,7 +5,7 @@
 
 - **[Grav](https://getgrav.org/)**: pre-configured latest version
 - **[Administration Panel](https://github.com/getgrav/grav-plugin-admin)**: Grav standard administration panel plugin
-- Built-in SCSS & Babel ES6 support using **[Gulp](http://gulpjs.com/)**
+- **[Gulp](http://gulpjs.com/)**: ES6 (Babel) & SCSS support
 - **[STACSS](https://github.com/nielsenramon/stacss)**: The unobtrusive SCSS framework
 - **[FontAwesome 5](https://fontawesome.com)**: Icons. Easy. Done
 
