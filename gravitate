@@ -1,23 +1,23 @@
 #!/usr/bin/env node
 
 var request = require('request'),
-    path = require('path'),
-    AdmZip = require('adm-zip'),
-    mv = require('mv'),
-    slug = require('slug'),
-    factory = require('factory'),
-    loading = require('loading-indicator'),
-    presets = require('loading-indicator/presets'),
-    chalk = require('chalk'),
-    inquirer = require('inquirer'),
-    shelljs = require('shelljs/global'),
-    fs = require('fs-extra');
+  path = require('path'),
+  AdmZip = require('adm-zip'),
+  mv = require('mv'),
+  slug = require('slug'),
+  factory = require('factory'),
+  loading = require('loading-indicator'),
+  presets = require('loading-indicator/presets'),
+  chalk = require('chalk'),
+  inquirer = require('inquirer'),
+  shelljs = require('shelljs/global'),
+  fs = require('fs-extra');
 
 var data = {
-  repo: 'https://github.com/Polarbitco/gravitate-grav/archive/master.zip',
+  repo: 'https://github.com/CompagnonAgency/gravitate-grav/archive/master.zip',
   temp: './temp.zip',
-  version: '0.3.10',
-  loadingPreset: presets.dots
+  version: '1.0.0',
+  loadingPreset: presets.arrows
 }
 
 var input = {};
@@ -128,11 +128,6 @@ function inquire() {
         }
         return 'Please enter a URL';
       }
-    },
-    {
-      type: 'input',
-      name: 'siteGoogleAnalytics',
-      message: 'Google Analytics ID (e.g. UA-78698997-8, optional)'
     }
   ];
 
@@ -217,18 +212,6 @@ function npmInstall() {
   exec('npm install', {silent: true}, function(code) {
     if (!code) {
       loading.stop(loadingTimer);
-      loadingTimer = loading.start('Installing Bower packages...', {
-        frames: data.loadingPreset
-      });
-      bowerInstall();
-    }
-  });
-}
-
-function bowerInstall() {
-  exec('bower install', {silent: true}, function(code) {
-    if (!code) {
-      loading.stop(loadingTimer);
       loadingTimer = loading.start('Installing Grav...', {
         frames: data.loadingPreset
       });
@@ -248,18 +231,8 @@ function chmodGrav() {
 function chmodGpm() {
   exec('chmod +x bin/gpm', {silent: true}, function(code) {
     if (!code) {
-      renameReadme();
+      gravInstall();
     }
-  });
-}
-
-function renameReadme() {
-  fs.rename(extractPath + input.siteSlug + '/README.md', extractPath + input.siteSlug + '/README_temp.md', function() {
-    loading.stop(loadingTimer);
-    loadingTimer = loading.start('Updating plugins...', {
-      frames: data.loadingPreset
-    });
-    updatePlugins();
   });
 }
 
@@ -267,10 +240,8 @@ function updatePlugins() {
   exec('bin/gpm update --all-yes', {silent: true}, function(code) {
     if (!code) {
       loading.stop(loadingTimer);
-      loadingTimer = loading.start('Updating Grav...', {
-        frames: data.loadingPreset
-      });
-      updateGrav();
+      console.log(finish('Generating Grav site completed ✓'));
+      console.log(finish('See '+chalk.underline('./' + input.siteSlug + '/README.md')+' for more information'));
     }
   });
 }
@@ -279,7 +250,10 @@ function updateGrav() {
   exec('bin/gpm selfupgrade --all-yes --force', {silent: true}, function(code) {
     if (!code) {
       loading.stop(loadingTimer);
-      gravInstall();
+      loadingTimer = loading.start('Updating plugins...', {
+        frames: data.loadingPreset
+      });
+      updatePlugins();
     }
   });
 }
@@ -287,13 +261,11 @@ function updateGrav() {
 function gravInstall() {
   exec('bin/grav install', {silent: true}, function(code) {
     if (!code) {
-      fs.rename(extractPath + input.siteSlug + '/README_temp.md', extractPath + input.siteSlug + '/README.md', function() {
-        fs.removeSync(extractPath + input.siteSlug + '/README_temp.md');
-        fs.removeSync(extractPath + input.siteSlug + '/CONTRIBUTING.md');
-        fs.removeSync(extractPath + input.siteSlug + '/webserver-configs');
-        console.log(finish('Generating Grav site completed ✓'));
-        console.log(finish('See '+chalk.underline('./' + input.siteSlug + '/README.md')+' for more information'));
+      loading.stop(loadingTimer);
+      loadingTimer = loading.start('Updating Grav...', {
+        frames: data.loadingPreset
       });
+      updateGrav();
     }
   });
 }
