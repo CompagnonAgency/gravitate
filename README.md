@@ -1,15 +1,13 @@
 # Gravitate 2.0 ✨
 > Project scaffolding for Grav CMS like a boss. 👊
 
-[![asciicast](https://asciinema.org/a/97723.png)](https://asciinema.org/a/97723)
-
 ## Features
 
 - **[Grav](https://getgrav.org/)**: pre-configured latest version
 - **[Administration Panel](https://github.com/getgrav/grav-plugin-admin)**: Grav standard administration panel plugin
 - Built-in SCSS & Babel ES6 support using **[Gulp](http://gulpjs.com/)**
 - **[STACSS](https://github.com/nielsenramon/stacss)**: The unobtrusive SCSS framework
-- **Goodies**: FontAwesome 5, jQuery, Google Analytics...
+- **[FontAwesome 5](https://fontawesome.com)**: Icons. Easy. Done
 
 The entire scaffold template can be found [here](https://github.com/CompagnonAgency/gravitate-grav).
 
