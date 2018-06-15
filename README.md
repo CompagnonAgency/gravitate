@@ -1,4 +1,4 @@
-# Gravitate
+# Gravitate 2.0
 > Project scaffolding for Grav CMS like a boss. 👊
 
 [![asciicast](https://asciinema.org/a/97723.png)](https://asciinema.org/a/97723)
@@ -9,11 +9,13 @@
 - **[Administration Panel](https://github.com/getgrav/grav-plugin-admin)**: Grav standard administration panel plugin
 - Built-in SCSS & Babel ES6 support using **[Gulp](http://gulpjs.com/)**
 - **[STACSS](https://github.com/nielsenramon/stacss)**: The unobtrusive SCSS framework
-- **[PHPloy](https://github.com/banago/PHPloy)**: incremental Git (S)FTP deployment tool
-- **[grav-sync](https://github.com/Polarbitco/grav-sync)**: sync remote/local environment by pulling the `/user` folder from your server
-- **Goodies**: FontAwesome, Bower, jQuery, Google Analytics...
+- **Goodies**: FontAwesome 5, jQuery, Google Analytics...
 
-The entire scaffold template can be found [here](https://github.com/Polarbitco/gravitate-grav).
+The entire scaffold template can be found [here](https://github.com/CompagnonAgency/gravitate-grav).
+
+## Requirements
+
+    Node > 8.3.0
 
 ## Installation
 
@@ -36,4 +38,4 @@ For testing purposes you can `cd` into the directory and install it from there.
 
 ## License
 
-MIT License - All Rights Reserved (c) Polarbit
+MIT License - All Rights Reserved (c) CompagnonAgency

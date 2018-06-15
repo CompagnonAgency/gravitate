@@ -14,9 +14,9 @@ var request = require('request'),
     fs = require('fs-extra');
 
 var data = {
-  repo: 'https://github.com/Polarbitco/gravitate-grav/archive/master.zip',
+  repo: 'https://github.com/CompagnonAgency/gravitate-grav/archive/master.zip',
   temp: './temp.zip',
-  version: '0.3.10',
+  version: '1.0.0',
   loadingPreset: presets.dots
 }
 
@@ -248,18 +248,8 @@ function chmodGrav() {
 function chmodGpm() {
   exec('chmod +x bin/gpm', {silent: true}, function(code) {
     if (!code) {
-      renameReadme();
+      gravInstall();
     }
-  });
-}
-
-function renameReadme() {
-  fs.rename(extractPath + input.siteSlug + '/README.md', extractPath + input.siteSlug + '/README_temp.md', function() {
-    loading.stop(loadingTimer);
-    loadingTimer = loading.start('Updating plugins...', {
-      frames: data.loadingPreset
-    });
-    updatePlugins();
   });
 }
 
@@ -267,10 +257,8 @@ function updatePlugins() {
   exec('bin/gpm update --all-yes', {silent: true}, function(code) {
     if (!code) {
       loading.stop(loadingTimer);
-      loadingTimer = loading.start('Updating Grav...', {
-        frames: data.loadingPreset
-      });
-      updateGrav();
+      console.log(finish('Generating Grav site completed ✓'));
+      console.log(finish('See '+chalk.underline('./' + input.siteSlug + '/README.md')+' for more information'));
     }
   });
 }
@@ -279,7 +267,10 @@ function updateGrav() {
   exec('bin/gpm selfupgrade --all-yes --force', {silent: true}, function(code) {
     if (!code) {
       loading.stop(loadingTimer);
-      gravInstall();
+      loadingTimer = loading.start('Updating plugins...', {
+        frames: data.loadingPreset
+      });
+      updatePlugins();
     }
   });
 }
@@ -287,13 +278,11 @@ function updateGrav() {
 function gravInstall() {
   exec('bin/grav install', {silent: true}, function(code) {
     if (!code) {
-      fs.rename(extractPath + input.siteSlug + '/README_temp.md', extractPath + input.siteSlug + '/README.md', function() {
-        fs.removeSync(extractPath + input.siteSlug + '/README_temp.md');
-        fs.removeSync(extractPath + input.siteSlug + '/CONTRIBUTING.md');
-        fs.removeSync(extractPath + input.siteSlug + '/webserver-configs');
-        console.log(finish('Generating Grav site completed ✓'));
-        console.log(finish('See '+chalk.underline('./' + input.siteSlug + '/README.md')+' for more information'));
+      loading.stop(loadingTimer);
+      loadingTimer = loading.start('Updating Grav...', {
+        frames: data.loadingPreset
       });
+      updateGrav();
     }
   });
 }
