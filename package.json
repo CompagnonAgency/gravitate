@@ -1,13 +1,13 @@
 {
   "name": "gravitate-grav",
-  "version": "0.3.10",
+  "version": "1.0.0",
   "description": "Project scaffolding for Grav CMS like a boss. 👊",
   "main": "gravitate",
   "bin": {
     "gravitate": "./gravitate"
   },
   "repository": {
-    "url": "https://github.com/Polarbitco/gravitate.git"
+    "url": "https://github.com/CompagnonAgency/gravitate.git"
   },
   "keywords": [
     "grav",
@@ -28,5 +28,10 @@
     "request": "^2.79.0",
     "shelljs": "^0.7.5",
     "slug": "^0.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.4.1",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0"
   }
 }
